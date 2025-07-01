@@ -212,7 +212,7 @@ section.py-2.bg-white {
 }
 
     .margin-acca p {
-    line-height:22px;
+    line-height:22px !important;
 
 }
 
