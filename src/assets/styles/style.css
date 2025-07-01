@@ -211,9 +211,6 @@ section.py-2.bg-white {
     gap: 30px;
 }
 
-    .margin-acca p {
-    line-height:22px !important;
-
 }
 
 
@@ -286,6 +283,7 @@ p.mb-4.link-class {
 
     .margin-acca p {
         font-size: 26px !important;
+        line-height:22px !important;
     }
 
     h2.h2-fonts {
