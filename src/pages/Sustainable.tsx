@@ -12,6 +12,9 @@ import theme2 from "../assets/image/theme2.png"
 import what1 from "../assets/image/what1.png"
 import what2 from "../assets/image/what2.png"
 import what3 from "../assets/image/what3.png"
+import What_Flashcard from "../assets/image/What_Flashcard.pdf";
+import Learn_more from "../assets/image/Learn_more.pdf";
+
 
 import { useState } from "react";
 import { ArrowRight, Plus, X } from "lucide-react";
@@ -273,14 +276,18 @@ const Sustainable = () => {
 
                   <div className="flex space-x-6 pt-4 tabs-links">
                     <a
-                      href="#"
+                      href={Learn_more}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-red-600 hover:text-red-700 font-medium text-sm transition-colors duration-200 flex items-center"
                     >
                       Click here to learn more →
                     </a>
 
                     <a
-                      href="#"
+                      href={What_Flashcard}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-red-600 hover:text-red-700 font-medium text-sm transition-colors duration-200 flex items-center"
                     >
                       Download Flashcard →
