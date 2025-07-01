@@ -210,6 +210,10 @@ section.py-2.bg-white {
     .grid.md\:grid-cols-5.\[\@media\(max-width\:425px\)\]\:grid-cols-2.gap-0.max-w-8xl.mx-auto.key-skills.relative {
     gap: 30px;
 }
+
+    .margin-acca p {
+    line-height:22px;
+
 }
 
 
