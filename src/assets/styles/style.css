@@ -277,7 +277,7 @@ p.mb-4.link-class {
 
     h1 {
         font-size: 70px !important;
-        line-height: 60px !important;
+        line-height: 65px !important;
     }
 
     .margin-acca p {
@@ -721,3 +721,4 @@ img.w-full.h-64.object-cover.image-height {
     width: 100%;
     height: auto;
 }
+
