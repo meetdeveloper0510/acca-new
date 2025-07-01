@@ -1,5 +1,5 @@
 
-import { Button } from "@/components/ui/button"; 
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   GraduationCap,
@@ -12,7 +12,7 @@ import {
   CheckCircle,
   Globe,
   Award
-} from "lucide-react"; 
+} from "lucide-react";
 // import bannerImage from "../assets/image/banner.png"
 import workOne from "../assets/image/work_1.png"
 import workTwo from "../assets/image/work_2.png"
@@ -91,7 +91,7 @@ const Index = () => {
 
 
       {/* Upskill Section */}
-      <section className="py-12 bg-white upskills">
+      <section className=" bg-white upskills">
         <div className="container mx-auto px-4">
           <h2 className="text-left mb-4 h2-fonts">Upskill</h2>
 
@@ -222,7 +222,7 @@ const Index = () => {
 
             {/* Vertical divider after third column */}
             <div className="relative text-center">
-              <div className="absolute -left-px top-1/2 transform -translate-y-1/2 w-px h-16 bg-white hidden md:block"></div>
+              <div className="absolute -left-px top-1/2 transform -translate-y-1/2 w-px h-24 bg-white hidden md:block"></div>
               <h3 className="mb-6">Effective<br></br> communication</h3>
               <div className="w-16 h-16 mx-auto mb-4">
                 <img
@@ -247,7 +247,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-6">
             <p className=" max-w-4xl mx-auto this-para">
               Together, these skills build your confidence in environmental awareness, tech fluency, and career readiness.
             </p>
