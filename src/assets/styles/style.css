@@ -38,6 +38,8 @@ body {
     overflow-x: hidden;
 }
 
+
+
 p {
     font-weight: 500;
     line-height: 24px;
@@ -107,7 +109,7 @@ h2.h2-fonts {
 
 .width p {
     font-weight: 500;
-    line-height: 22px;
+    line-height: 32px;
 }
 
 .width .container {
@@ -210,7 +212,6 @@ section.py-2.bg-white {
     .grid.md\:grid-cols-5.\[\@media\(max-width\:425px\)\]\:grid-cols-2.gap-0.max-w-8xl.mx-auto.key-skills.relative {
     gap: 30px;
 }
-
 }
 
 
@@ -278,13 +279,11 @@ p.mb-4.link-class {
 
     h1 {
         font-size: 70px !important;
-        line-height: 65px !important;
+        line-height: 60px !important;
     }
 
     .margin-acca p {
         font-size: 26px !important;
-        line-height:28px !important;
-        margin-top:20px !important; 
     }
 
     h2.h2-fonts {
@@ -441,6 +440,12 @@ h3.h3-fonts {
     line-height: 22px;
     font-size: 18px !important;
     color: #c80000;
+    text-decoration: underline;
+}
+
+.upskills {
+    padding-top: 4em;
+    padding-bottom: 5em;
 }
 
 .only-ul li span:last-child {
@@ -697,7 +702,7 @@ h2.h2-tabs {
 }
 
 p.tabs-para {
-    line-height: 30px;
+    line-height: 32px;
     margin-top: 20px !important;
 }
 
@@ -717,6 +722,7 @@ img.w-full.h-64.object-cover.image-height {
 .tabs-links a {
     font-size: 18px;
     color: #c80000;
+    text-decoration: underline;
 }
 
 
@@ -725,3 +731,14 @@ img.w-full.h-64.object-cover.image-height {
     height: auto;
 }
 
+
+@media screen and (min-width:1800px) and (max-width:1940px) {
+.margin-acca.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+}
+
+svg.lucide.lucide-arrow-right.ml-2.h-4.w-4 {
+    color: #c80000 !important;
+}
