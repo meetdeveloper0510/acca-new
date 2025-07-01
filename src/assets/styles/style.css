@@ -283,7 +283,8 @@ p.mb-4.link-class {
 
     .margin-acca p {
         font-size: 26px !important;
-        line-height:22px !important;
+        line-height:28px !important;
+        margin-top:20px !important;
     }
 
     h2.h2-fonts {
