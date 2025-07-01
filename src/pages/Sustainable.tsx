@@ -207,28 +207,28 @@ const Sustainable = () => {
                 </div>
               </a>
 
-              <a href="" className="cursor-pointer block">
+              <a href="#" className="cursor-pointer block"> 
                 <img
                   src={img1}
                   alt="Industrial welding background"
                   className="w-full h-full object-cover ips-image"
                 />
               </a>
-              <a href="" className="cursor-pointer block">
+              <a href="#" className="cursor-pointer block">
                 <img
                   src={img2}
                   alt="Industrial welding background"
                   className="w-full h-full object-cover ips-image"
                 />
               </a>
-              <a href="" className="cursor-pointer block">
+              <a href="#" className="cursor-pointer block">
                 <img
                   src={img3}
                   alt="Industrial welding background"
                   className="w-full h-full object-cover ips-image"
                 />
               </a>
-              <a href="" className="cursor-pointer block">
+              <a href="#" className="cursor-pointer block">
                 <img
                   src={img4}
                   alt="Industrial welding background"
