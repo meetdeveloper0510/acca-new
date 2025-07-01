@@ -12,7 +12,7 @@ import {
   CheckCircle,
   Globe,
   Award
-} from "lucide-react";
+} from "lucide-react"; 
 // import bannerImage from "../assets/image/banner.png"
 import workOne from "../assets/image/work_1.png"
 import workTwo from "../assets/image/work_2.png"
@@ -177,14 +177,14 @@ const Index = () => {
       {/* Key Skills */}
       <section className="py-0 bg-gradient-to-r from-[#C80000] to-[#E50068] key-skills-section">
         <div className="container mx-auto px-4">
-          <h2 className="text-left mb-4 h2-fonts skills-gain">Key skills to gain</h2>
+          <h2 className="text-left mb-4 h2-fonts skills-gain">Key skills you will gain</h2>
 
           {/* Divider line */}
           <div className="bg-[#ffffff] h-[2px] w-[100px] mb-12"></div>
 
           <div className="grid md:grid-cols-5 [@media(max-width:425px)]:grid-cols-2 gap-0 max-w-8xl mx-auto key-skills relative">
             <div className="text-center">
-              <h3 className="mb-6">Optimised interview readiness</h3>
+              <h3 className="mb-6">Optimised<br></br> interview readiness</h3>
               <div className="w-16 h-16 mx-auto mb-4">
                 <img
                   src={optimized}
@@ -197,7 +197,7 @@ const Index = () => {
             {/* Vertical divider after first column */}
             <div className="relative text-center">
               <div className="absolute -left-px top-1/2 transform -translate-y-1/2 w-px h-16 bg-white hidden md:block"></div>
-              <h3 className="mb-6">Impactful personal branding</h3>
+              <h3 className="mb-6">Impactful<br></br> personal branding</h3>
               <div className="w-16 h-16 mx-auto mb-4">
                 <img
                   src={impactful}
@@ -210,7 +210,7 @@ const Index = () => {
             {/* Vertical divider after second column */}
             <div className="relative text-center">
               <div className="absolute -left-px top-1/2 transform -translate-y-1/2 w-px h-16 bg-white hidden md:block"></div>
-              <h3 className="mb-6">Adaptive and critical thinking</h3>
+              <h3 className="mb-6">Adaptive and<br></br> critical thinking</h3>
               <div className="w-16 h-16 mx-auto mb-4">
                 <img
                   src={adaptive}
@@ -223,7 +223,7 @@ const Index = () => {
             {/* Vertical divider after third column */}
             <div className="relative text-center">
               <div className="absolute -left-px top-1/2 transform -translate-y-1/2 w-px h-16 bg-white hidden md:block"></div>
-              <h3 className="mb-6">Effective communication</h3>
+              <h3 className="mb-6">Effective<br></br> communication</h3>
               <div className="w-16 h-16 mx-auto mb-4">
                 <img
                   src={effective}
