@@ -3,7 +3,7 @@ import Footer from "@/components/ui/Footer";
 import sustain from "../assets/image/sustain.png";
 import img1 from "../assets/image/img1.png";
 import img2 from "../assets/image/img2.png";
-import img3 from "../assets/image/img3.png";
+import img3 from "../assets/image/img3.png"; 
 import img4 from "../assets/image/img4.png";
 import rightbanner from "../assets/image/rightbanner.png"
 import theme1 from "../assets/image/theme1.png"
