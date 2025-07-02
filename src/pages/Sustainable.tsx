@@ -1,4 +1,3 @@
-
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
 import sustain from "../assets/image/sustain.png";
@@ -14,22 +13,53 @@ import what2 from "../assets/image/what2.png"
 import what3 from "../assets/image/what3.png"
 import What_Flashcard from "../assets/image/What_Flashcard.pdf";
 import Learn_more from "../assets/image/Learn_more.pdf";
+import search from "../assets/image/search.svg";
+import lamp from "../assets/image/lamp.svg"
+import person from "../assets/image/person.svg";
+import map from "../assets/image/map.svg";
+import how from "../assets/image/how.svg";
+import { FiSearch, FiUser, FiMapPin, FiSettings, FiArrowRight } from "react-icons/fi";
+import { TbBulb } from "react-icons/tb";
 
-
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ArrowRight, Plus, X } from "lucide-react";
 
 const Sustainable = () => {
   const [activeTab, setActiveTab] = useState("what");
   const [activePopup, setActivePopup] = useState<{ tab: string; icon: number } | null>(null);
+  const [popupPosition, setPopupPosition] = useState({ top: 0, right: 0 });
+  const buttonRefs = useRef<{ [key: number]: HTMLButtonElement | null }>({});
 
-  const tabs = [
-    { id: "what", label: "What", icon: "📊" },
-    { id: "why", label: "Why", icon: "❓" },
-    { id: "who", label: "Who", icon: "👥" },
-    { id: "where", label: "Where", icon: "📍" },
-    { id: "how", label: "How", icon: "⚙️" },
-  ];
+  
+  const [isLoaded, setIsLoaded] = useState(false);
+const [showPinkBox, setShowPinkBox] = useState(true);
+
+// Trigger animations on component mount
+useEffect(() => {
+  // Hide pink box after animation
+  const pinkBoxTimer = setTimeout(() => {
+    setShowPinkBox(false);
+  }, 1500);
+
+  // Start main content animation
+  const contentTimer = setTimeout(() => {
+    setIsLoaded(true);
+  }, 800);
+
+  return () => {
+    clearTimeout(pinkBoxTimer);
+    clearTimeout(contentTimer);
+  };
+}, []);
+
+
+const tabs = [
+  { id: "what", label: "What", icon: <FiSearch className="text-red-500 w-5 h-5" /> },
+  { id: "why", label: "Why", icon: <TbBulb className="text-red-500 w-5 h-5" /> },
+  { id: "who", label: "Who", icon: <FiUser className="text-red-500 w-5 h-5" /> },
+  { id: "where", label: "Where", icon: <FiMapPin className="text-red-500 w-5 h-5" /> },
+  { id: "how", label: "How", icon: <FiSettings className="text-red-500 w-5 h-5" /> },
+];
 
   const contentData = {
     what: {
@@ -145,6 +175,35 @@ const Sustainable = () => {
   };
 
   const handleIconClick = (iconNumber: number) => {
+    const buttonElement = buttonRefs.current[iconNumber];
+    
+    if (buttonElement) {
+      const buttonRect = buttonElement.getBoundingClientRect();
+      const popupWidth = 320; // w-80 = 320px
+      const popupHeight = 400; // estimated height
+      
+      // Position popup below the button, aligned to the right edge of the button with additional 55px offset
+      let rightPosition = window.innerWidth - buttonRect.right - 55; // Added 55px offset to move popup more to the right
+      let topPosition = buttonRect.bottom + 10;
+      
+      // Ensure popup doesn't go off the right edge of screen
+      if (rightPosition < 10) {
+        rightPosition = 10;
+      }
+      
+      // Check if popup fits below the button
+      const viewportHeight = window.innerHeight;
+      if (topPosition + popupHeight > viewportHeight - 10) {
+        // If not enough space below, show above the button
+        topPosition = buttonRect.top - popupHeight - 10;
+      }
+      
+      setPopupPosition({
+        top: topPosition,
+        right: rightPosition,
+      });
+    }
+    
     setActivePopup({ tab: activeTab, icon: iconNumber });
   };
 
@@ -174,6 +233,8 @@ const Sustainable = () => {
   ];
 
   return (
+
+
     <div className="remove-scrollbar min-h-screen bg-background">
       <Header />
 
@@ -196,11 +257,31 @@ const Sustainable = () => {
         </div>
       </section>
 
+
+    {/* Pink Box Animation */}
+{showPinkBox && (
+  <div className="fixed inset-0 z-50 pointer-events-none flex items-end justify-center">
+    <div 
+      className="w-96 h-96 bg-pink-500 opacity-90 animate-[fadeUpAndOut_1.5s_ease-out_forwards]"
+      style={{
+        animation: 'fadeUpAndOut 1.5s ease-out forwards',
+        transform: 'translateY(100%)',
+      }}
+    />
+  </div>
+)}
+
+
       {/* Main Content of the page */}
       <section className="pt-10 pb-6">
         <div className="custom-container">
-          <div className="md:grid md:grid-cols-12 gap-6 max-w-7xl mx-auto mobile-flex">
-
+<div 
+  className={`md:grid md:grid-cols-12 gap-6 max-w-7xl mx-auto mobile-flex transition-all duration-1000 ease-out ${
+    isLoaded 
+      ? 'opacity-100 translate-y-0' 
+      : 'opacity-0 translate-y-20'
+  }`}
+>
             {/* Sidebar */}
             <div className="col-span-2 space-y-2">
               <a href="/" className="block">
@@ -210,28 +291,28 @@ const Sustainable = () => {
                 </div>
               </a>
 
-              <a href="#" className="cursor-pointer block"> 
+              <a href="" className="cursor-pointer block">
                 <img
                   src={img1}
                   alt="Industrial welding background"
                   className="w-full h-full object-cover ips-image"
                 />
               </a>
-              <a href="#" className="cursor-pointer block">
+              <a href="" className="cursor-pointer block">
                 <img
                   src={img2}
                   alt="Industrial welding background"
                   className="w-full h-full object-cover ips-image"
                 />
               </a>
-              <a href="#" className="cursor-pointer block">
+              <a href="" className="cursor-pointer block">
                 <img
                   src={img3}
                   alt="Industrial welding background"
                   className="w-full h-full object-cover ips-image"
                 />
               </a>
-              <a href="#" className="cursor-pointer block">
+              <a href="" className="cursor-pointer block">
                 <img
                   src={img4}
                   alt="Industrial welding background"
@@ -243,14 +324,14 @@ const Sustainable = () => {
             {/* Themes List */}
             <div className="col-span-10 space-y-6">
               {/* Tabs Navigation */}
-             <div className="flex flex-wrap max-[425px]:flex gap-6 mb-8 mt-4 margin-this">
+              <div className="flex flex-wrap max-[425px]:flex gap-6 mb-8 mt-4 margin-this">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`tab-gap button-style flex items-center px-6 py-3 transition-colors duration-200 ${activeTab === tab.id
-                        ? " font-bold"
-                        : "border-color text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                      ? " font-bold"
+                      : "border-color text-gray-500 hover:text-gray-700 hover:border-gray-300"
                       }`}
                   >
                     <span className="mr-2">{tab.icon}</span>
@@ -308,28 +389,31 @@ const Sustainable = () => {
                     <div className="absolute inset-0 position-set">
                       {/* Icon 1 - Top Right */}
                       <button
+                        ref={(el) => buttonRefs.current[1] = el}
                         onClick={() => handleIconClick(1)}
-                        className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200 group btn-1"
+                        className="w-7 h-7 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200 group btn-1"
                       >
-                        <Plus className="h-6 w-6 border border-[#CF001B] text-[#CF001B] p-0.5 rounded-full font-bold"  />
+                        <Plus className="h-5 w-5 border border-[#CF001B] text-[#CF001B] rounded-full font-bold  cssforthis"/>
                       </button>
 
                       {/* Icon 2 - Middle Right */}
                       <button
+                        ref={(el) => buttonRefs.current[2] = el}
                         onClick={() => handleIconClick(2)}
-                        className="transform -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200 group btn-2"
+                        className="transform -translate-y-1/2 w-7 h-7 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200 group btn-2"
                       >
-                        <Plus className="h-6 w-6 border border-[#CF001B] text-[#CF001B] p-0.5 rounded-full font-bold"  />
+                        <Plus className="h-5 w-5 border border-[#CF001B] text-[#CF001B] rounded-full font-bold cssforthis" />
                       </button>
 
                       {/* Icon 3 - Bottom Right */}
                       <button
+                        ref={(el) => buttonRefs.current[3] = el}
                         onClick={() => handleIconClick(3)}
-                        className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200 group btn-3"
+                        className="w-7 h-7 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200 group btn-3"
                       >
-                        <Plus className="h-6 w-6 border border-[#CF001B] text-[#CF001B] p-0.5 rounded-full font-bold"  />
+                        <Plus className="h-5 w-5 border border-[#CF001B] text-[#CF001B] rounded-full font-bold cssforthis" />
                       </button>
-                    </div> 
+                    </div>
                   </div>
 
                   {/* Caption */}
@@ -373,25 +457,31 @@ const Sustainable = () => {
 
       {/* Popup Modal */}
       {activePopup && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        <div
+          className="fixed inset-0 z-50"
           onClick={handlePopupBackdropClick}
         >
-          <div className="bg-white rounded-lg shadow-2xl relative max-w-4xl max-h-[90vh] overflow-auto m-4">
+          <div 
+            className="absolute bg-white shadow-2xl w-80 max-h-96 overflow-hidden border border-gray-200 box-width"
+            style={{
+              top: `${popupPosition.top}px`,
+              right: `${popupPosition.right}px`,
+            }}
+          >
             {/* Close Button */}
-            <button
+            {/* <button
               onClick={closePopup}
-              className="absolute top-4 right-4 z-10 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
+              className="absolute top-2 right-2 z-10 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors duration-200 border border-gray-200"
             >
-              <X className="h-5 w-5 text-gray-600" />
-            </button>
-            
+              <X className="h-4 w-4 text-gray-600" />
+            </button> */}
+
             {/* Popup Content */}
-            <div className="p-0">
+            <div className="overflow-auto max-h-96">
               <img
                 src={contentData[activePopup.tab as keyof typeof contentData].popupImages[activePopup.icon - 1].src}
                 alt={contentData[activePopup.tab as keyof typeof contentData].popupImages[activePopup.icon - 1].alt}
-                className="w-full h-auto max-w-full max-h-[70vh] object-contain"
+                className="w-full h-auto object-contain rounded-lg"
                 onError={(e) => {
                   console.error('Image failed to load:', e.currentTarget.src);
                   e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMThweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4=';
